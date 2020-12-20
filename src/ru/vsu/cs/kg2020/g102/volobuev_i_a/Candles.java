@@ -80,13 +80,21 @@ public class Candles {
         //
         for (JapanCandle tmp:
                 list) {
-            if (tmp.getD()>0)
-                g.drawRect(currX-xMax+xOffset, 600-tmp.getStPrice()-tmp.getD()-yOffset, 2*xMax, tmp.getD());
-            else
-                g.fillRect(currX-xMax+xOffset, 600-tmp.getStPrice()-yOffset, 2*xMax, -tmp.getD());
+            if (tmp.getD()>0){
+                ld.drawLine(currX-xMax+xOffset,600-tmp.getStPrice()-tmp.getD()-yOffset,currX+xMax+xOffset,600-tmp.getStPrice()-tmp.getD()-yOffset,Color.WHITE);
+                ld.drawLine(currX-xMax+xOffset,600-tmp.getStPrice()-tmp.getD()-yOffset,currX-xMax+xOffset,600-tmp.getStPrice()-yOffset,Color.WHITE);
+                ld.drawLine(currX+xMax+xOffset,600-tmp.getStPrice()-tmp.getD()-yOffset,currX+xMax+xOffset,600-tmp.getStPrice()-yOffset,Color.WHITE);
+                ld.drawLine(currX-xMax+xOffset,600-tmp.getStPrice()-yOffset,currX+xMax+xOffset,600-tmp.getStPrice()-yOffset,Color.WHITE);
+            }
+            else{
+                for (int i =currX-xMax+xOffset;i<=currX+xMax+xOffset;i++){
+                    for (int j =600-tmp.getStPrice()-yOffset;j<=600-tmp.getStPrice()-yOffset-tmp.getD();j++){
+                        pd.drawPixel(i,j,Color.WHITE);
+                    }
+                }
+            }
             ld.drawLine(currX+xOffset, 600-tmp.getLowerWh()-yOffset, currX+xOffset, 600-tmp.getUpperWh()-yOffset,Color.WHITE);
             currX+=25;
         }
-        currX = 60;
     }
 }

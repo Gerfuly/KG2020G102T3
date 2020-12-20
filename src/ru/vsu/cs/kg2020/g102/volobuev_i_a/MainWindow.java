@@ -17,6 +17,7 @@ public class MainWindow extends JFrame {
         cm.addCandle(400, 75, 350, 500);
         cm.addCandle(20, 400, 10, 500);
         cm.addCandle(150, 50, 100,270);
+        cm.addCandle(400,-10,350,510);
 
         this.addKeyListener(new KeyListener() {
 
